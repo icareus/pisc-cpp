@@ -6,7 +6,7 @@
 /*   By: abarbaro <abarbaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/06 13:49:37 by abarbaro          #+#    #+#             */
-/*   Updated: 2015/01/06 19:24:31 by abarbaro         ###   ########.fr       */
+/*   Updated: 2015/01/06 20:29:39 by abarbaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ class Zombie
 public:
 	Zombie(std::string _type);
 	~Zombie();
-	void			announce(void);
+	void			announce(void) const;
 	void			setName(std::string name);
 private:
 	std::string		_name;

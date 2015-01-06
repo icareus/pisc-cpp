@@ -6,7 +6,7 @@
 /*   By: abarbaro <abarbaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/06 14:56:41 by abarbaro          #+#    #+#             */
-/*   Updated: 2015/01/06 19:29:31 by abarbaro         ###   ########.fr       */
+/*   Updated: 2015/01/06 20:29:40 by abarbaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ public:
 	ZombieEvent();
 	~ZombieEvent();
 	void 		setZombieType(std::string type);
-	Zombie*		newZombie(std::string name);
+	Zombie*		newZombie(std::string name) const;
 private:
 	std::string			_type;
 };

@@ -6,7 +6,7 @@
 /*   By: abarbaro <abarbaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/06 14:56:01 by abarbaro          #+#    #+#             */
-/*   Updated: 2015/01/06 19:38:22 by abarbaro         ###   ########.fr       */
+/*   Updated: 2015/01/06 20:37:32 by abarbaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,10 @@ Zombie::Zombie(std::string _type) {
 }
 
 Zombie::~Zombie() {
-	if (!this->_type.compare("Heapie Zombie"))
-		delete this;
+	std::cout << this->_name << " crumbles into the ground." << std::endl;
 }
 
-void Zombie::announce(void) {
+void Zombie::announce(void) const {
 	int						dice = rand() % 6;
 	std::stringstream		out;
 
@@ -94,4 +93,6 @@ int		main(void) {
 			randomChump();
 	}
 	std::cout << std::endl << "Surrounded by zombies, you end up devoured." << std::endl;
+	for (int k = 0; k < timeToDie; k++)
+		delete surrounding[k];
 }
