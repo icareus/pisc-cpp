@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*   ZombieHorde.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abarbaro <abarbaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/06 13:49:37 by abarbaro          #+#    #+#             */
-/*   Updated: 2015/01/06 21:03:34 by abarbaro         ###   ########.fr       */
+/*   Created: 2015/01/06 20:46:50 by abarbaro          #+#    #+#             */
+/*   Updated: 2015/01/06 21:23:30 by abarbaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZOMBIE_HPP
-# define ZOMBIE_HPP
+#ifndef ZOMBIE_HORDE_HPP
+# define ZOMBIE_HORDE_HPP
 
-# include <string>
+# ifndef ZOMBIE_HPP
+# include "Zombie.hpp"
+# endif
 
-class Zombie
+class ZombieHorde
 {
 public:
-	Zombie(std::string _type);
-	~Zombie();
-	void			announce(void) const;
-	void			setName(std::string name);
+	ZombieHorde(int _size);
+	~ZombieHorde();
+	void	announce() const;
 private:
-	std::string		_name;
-	std::string		_type;
+	int			_size;
+	Zombie**	_horde;	
 };
 
 #endif
