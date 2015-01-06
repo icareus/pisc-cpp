@@ -6,7 +6,7 @@
 /*   By: abarbaro <abarbaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/05 22:28:09 by abarbaro          #+#    #+#             */
-/*   Updated: 2015/01/06 00:21:10 by abarbaro         ###   ########.fr       */
+/*   Updated: 2015/01/06 09:23:21 by abarbaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ public:
 	Entry();
 	~Entry();
 	void fill(int index);
+	void display(void);
 
 	int				index;
 	std::string		firstName;
