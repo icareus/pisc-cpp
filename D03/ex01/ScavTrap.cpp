@@ -1,48 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   FragTrap.cpp                                       :+:      :+:    :+:   */
+/*   ScavTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abarbaro <abarbaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/09 02:38:52 by abarbaro          #+#    #+#             */
-/*   Updated: 2015/01/09 07:20:48 by abarbaro         ###   ########.fr       */
+/*   Updated: 2015/01/09 07:20:47 by abarbaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "FragTrap.hpp"
+#include "ScavTrap.hpp"
 #include <cstdlib>
+#include <cstring>
 #include <iostream>
 
-FragTrap::FragTrap(void) {
+ScavTrap::ScavTrap(void) {
 	this->_life = 100;
 	this->_maxlife = 100;
-	this->_energy = 100;
-	this->_maxenergy = 100;
+	this->_energy = 50;
+	this->_maxenergy = 50;
 	this->_level = 1;
-	this->_name = "FR4G-TP";
-	this->_melee = 30;
-	this->_ranged = 20;
-	this->_defense = 5;
+	this->_name = "SC4V-TP";
+	this->_melee = 20;
+	this->_ranged = 15;
+	this->_defense = 3;
 	this->_alive = true;
-	std::cout << "FragTrap <" << this->_name << "> created." << std::endl;
+	std::cout << "ScavTrap <" << this->_name << "> created." << std::endl;
 }
 
-FragTrap::FragTrap(std::string _name) {
+ScavTrap::ScavTrap(std::string _name) {
 	this->_life = 100;
 	this->_maxlife = 100;
-	this->_energy = 100;
-	this->_maxenergy = 100;
+	this->_energy = 50;
+	this->_maxenergy = 50;
 	this->_level = 1;
 	this->_name = _name;
-	this->_melee = 30;
-	this->_ranged = 20;
-	this->_defense = 5;
+	this->_melee = 20;
+	this->_ranged = 15;
+	this->_defense = 3;
 	this->_alive = true;
-	std::cout << "FragTrap <" << this->_name << "> created." << std::endl;
+	std::cout << "ScavTrap <" << this->_name << "> created." << std::endl;
 }
 
-FragTrap::FragTrap(const FragTrap & src) {
+ScavTrap::ScavTrap(const ScavTrap & src) {
 	this->_life = src._life;
 	this->_maxlife = src._maxlife;
 	this->_energy = src._energy;
@@ -53,14 +54,14 @@ FragTrap::FragTrap(const FragTrap & src) {
 	this->_ranged = src._ranged;
 	this->_defense = src._defense;
 	this->_alive = src._alive;
-	std::cout << "FragTrap <" << this->_name << "> copied." << std::endl;
+	std::cout << "ScavTrap <" << this->_name << "> copied." << std::endl;
 }
 
-FragTrap::~FragTrap() {
-	std::cout << this->_name << ": Emergency deconstruction !" << std::endl;
+ScavTrap::~ScavTrap() {
+	std::cout << this->_name << ": I'm outta here !" << std::endl;
 }
 
-FragTrap& FragTrap::operator=(const FragTrap & assig) {
+ScavTrap& ScavTrap::operator=(const ScavTrap & assig) {
 	this->_life = assig._life;
 	this->_maxlife = assig._maxlife;
 	this->_energy = assig._energy;
@@ -75,7 +76,7 @@ FragTrap& FragTrap::operator=(const FragTrap & assig) {
 	return *this;
 }
 
-int FragTrap::rangedAttack(std::string const & target) {
+int ScavTrap::rangedAttack(std::string const & target) {
 	if (!this->_alive)
 		return 0;
 	std::cout << "FR4G-TP <" << this->_name
@@ -84,7 +85,7 @@ int FragTrap::rangedAttack(std::string const & target) {
 	return this->_ranged;
 }
 
-int FragTrap::meleeAttack(std::string const & target) {
+int ScavTrap::meleeAttack(std::string const & target) {
 	if (!this->_alive)
 		return 0;
 	std::cout << "FR4G-TP <" << this->_name
@@ -93,7 +94,7 @@ int FragTrap::meleeAttack(std::string const & target) {
 	return this->_melee;
 }
 
-int FragTrap::takeDamage(unsigned int amount) {
+int ScavTrap::takeDamage(unsigned int amount) {
 	if (!this->_alive) {
 		std::cout << "<" << this->_name << "> is already KO.";
 		return (0);
@@ -117,7 +118,7 @@ int FragTrap::takeDamage(unsigned int amount) {
 	return (this->_life);
 }
 
-int FragTrap::beRepaired(unsigned int amount) {
+int ScavTrap::beRepaired(unsigned int amount) {
 	if (!this->_alive) {
 		std::cout << "It's too late for <" << this->_name << "> already." << std::endl;
 		return (0);
@@ -136,17 +137,17 @@ int FragTrap::beRepaired(unsigned int amount) {
 	return (this->_life);
 }
 
-int	FragTrap::vaulthunter_dot_exe(std::string const &target) {
-	if (!this->_alive || this->_energy < 25) {
-		std::cout << "<" << this->_name << "> is out of energy." << std::endl;
-		return 0;
+void ScavTrap::challengeNewcomer() {
+	int dice1 = rand() % 4;
+	int dice2 = rand() % 4 + 4;
+	if (!this->_alive) {
+		return ;
 	}
-	int dice = rand() % 6 + 1;
-	std::string set[] = {"Vidange", "Biffle", "Lance-Flemme", "Ennui Mortel", "Randomisation"};
-	int damage = rand() % 25 + 17;
-
-	std::cout << "Special delivery for <" << target << "> : <" << this->_name << "> cast " << set[dice] << " for <"
-		<< damage << "> damage !" << std::endl;
-	this->_energy -= 25;
-	return (damage);
+	std::string set[8] = {
+		"zoom", "scratch", "shoo", "lickScav"
+		"HUD", "purge exhaust", "constructor", "weapon"
+	};
+	std::cout << "Newcomer ! I challenge you to "
+		<< set[dice1] << (rand() % 2 ? " my " : "your ")
+		<< set[dice2] << std::endl;
 }
