@@ -6,11 +6,14 @@
 /*   By: abarbaro <abarbaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/09 02:39:08 by abarbaro          #+#    #+#             */
-/*   Updated: 2015/01/09 06:48:12 by abarbaro         ###   ########.fr       */
+/*   Updated: 2015/01/09 08:16:18 by abarbaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string>
+#ifndef SCAVTRAP_HPP
+# define SCAVTRAP_HPP
+
+# include <string>
 
 class ScavTrap
 {
@@ -39,3 +42,5 @@ private:
 	unsigned int 		_ranged;
 	unsigned int 		_defense;
 };
+
+#endif
